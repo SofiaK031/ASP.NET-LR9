@@ -1,0 +1,32 @@
+﻿@model IEnumerable<LR9.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Product table";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/productsAsTable.css" />
+</head>
+
+<div class="container mt-5">
+    <h4 class="text-center display-5 mb-4">Product table</h4>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td id="productID">@product.ID</td>
+                    <td>@product.Name</td>
+                    <td id="productPrice">@product.Price$</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

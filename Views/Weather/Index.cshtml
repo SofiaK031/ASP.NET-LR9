@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Weather";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/weather.css" />
+</head>
+
+<h2 class="my-h2">Weather in @Model.Name</h2>
+
+<form class="my-form" method="get" action="@Url.Action("Index", "Weather")">
+    <label for="city">Enter city:</label>
+    <input type="text" id="city" name="city" placeholder="Kyiv/Київ" value="@ViewBag.City" />
+    <button type="submit">Get weather</button>
+</form>
+
+<div class="my-div">
+    @if (Model != null)
+    {
+        <h3 class="my-h3">Date & time: @DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss")</h3>
+
+        @if (Model.WeatherMain != null)
+        {
+            <p class="my-p"><strong>Temperature:</strong> @Model.WeatherMain.Temp°C</p>
+            <p class="my-p"><strong>Feels like:</strong> @Model.WeatherMain.FeelsLike°C</p>
+            <p class="my-p"><strong>Min temperature:</strong> @Model.WeatherMain.TempMin°C</p>
+            <p class="my-p"><strong>Max temperature:</strong> @Model.WeatherMain.TempMax°C</p>
+            <p class="my-p"><strong>Humidity:</strong> @Model.WeatherMain.Humidity%</p>
+            <p class="my-p"><strong>Pressure:</strong> @Model.WeatherMain.Pressure mmHg</p>
+
+            @if (Model.WeatherWind != null)
+            {
+                <p class="my-p"><strong>Wind:</strong> @Model.WeatherWind?.Speed m/s</p>
+                <p class="my-p"><strong>Wind gust:</strong> @Model.WeatherWind?.Gust m/s</p>
+                <p class="my-p"><strong>Wind direction:</strong> @Model.WeatherWind?.Deg°</p>
+            }
+            else
+            {
+                <p class="my-p1">Wind data is unavailable.</p>
+            }
+        }
+        else
+        {
+            <p class="my-p1">Temperature, humidity, feels like, min/max temeratures, pressure and wind data is unavailable.</p>
+        }
+
+        @if (Model.Weather != null && Model.Weather.Count > 0 && Model.Weather[0] != null)
+        {
+            <p class="my-p"><strong>Description:</strong> @Model.Weather[0].Description</p>
+        }
+        else
+        {
+            <p class="my-p1">Weather description is unavailable.</p>
+        }
+    }
+    else
+    {
+        <p class="my-p1">Weather data could not be retrieved.</p>
+    }
+</div>
