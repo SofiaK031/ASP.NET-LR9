@@ -1,0 +1,49 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+h4 {
+    font-family: "Dancing Script", cursive;
+}
+
+table {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+}
+
+th {
+    text-align: center;
+}
+
+#productID, #productPrice {
+    text-align: center;
+}
+
+#productID {
+    font-weight: bold;
+}
+
+th:nth-child(1), td:nth-child(1) { /* ID */
+    width: 10%;
+}
+
+th:nth-child(2), td:nth-child(2) { /* Name */
+    width: 30%;
+}
+
+th:nth-child(3), td:nth-child(3) { /* Price */
+    width: 20%;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #DFFFD6;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #FFFACD;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #b8e6bf;
+}
